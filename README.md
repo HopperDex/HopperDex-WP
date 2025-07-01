@@ -4,6 +4,8 @@
 
 #### **市场机会概述**
 
+根据a16z的[《State of Crypto Report 2024》\[1\]](https://a16zcrypto.com/posts/article/state-of-crypto-report-2024)、CoinMarketCap的"[Week in Solana: 2024 Recap"\[2\]](https://coinmarketcap.com/academy/article/week-in-solana-2024-recap)以及Galaxy Digital最新发布的[《Crypto & Blockchain Venture Capital – Q4 2024》\[3\]](https://www.galaxy.com/research/insights/crypto-blockchain-venture-capital-q4-2024)的数据显示，加密货币市场正迎来前所未有的发展机遇。
+
 ```
  根据a16z的[《State of Crypto Report 2024》\[1\]](https://a16zcrypto.com/posts/article/state-of-crypto-report-2024)、CoinMarketCap的"[Week in Solana: 2024 Recap"\[2\]](https://coinmarketcap.com/academy/article/week-in-solana-2024-recap)以及Galaxy Digital最新发布的[《Crypto & Blockchain Venture Capital – Q4 2024》\[3\]](https://www.galaxy.com/research/insights/crypto-blockchain-venture-capital-q4-2024)的数据显示，加密货币市场正迎来前所未有的发展机遇。
 ```
