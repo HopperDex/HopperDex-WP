@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AIDverse Ecosystem Overview</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #00B4D8;
+            --secondary-color: #2CD1DB;
+            --background-color: #0D1117;
+            --text-color: #FFFFFF;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--background-color);
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title {
+            color: var(--text-color);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+        .chart-container {
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            height: 800px;
+            box-shadow: 0 0 15px rgba(0, 180, 216, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">AIDverse Ecosystem Overview</h1>
+        <div class="subtitle">Integration of AI, DePIN, SocialFi, and RWA Technologies</div>
+        
+        <div class="chart-container" id="ecosystemChart"></div>
+    </div>
+
+    <script>
+        const ecosystemChart = echarts.init(document.getElementById('ecosystemChart'));
+        const ecosystemOption = {
+            backgroundColor: 'transparent',
+            title: {
+                text: 'AIDverse Ecosystem Architecture',
+                textStyle: { color: '#FFFFFF' }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}'
+            },
+            series: [{
+                type: 'tree',
+                name: 'AIDverse Ecosystem',
+                data: [{
+                    name: 'AIDverse',
+                    itemStyle: { color: '#00B4D8' },
+                    children: [
+                        {
+                            name: 'AI Infrastructure',
+                            itemStyle: { color: '#2CD1DB' },
+                            children: [
+                                {
+                                    name: 'GPU/CPU\nNetwork',
+                                    itemStyle: { color: '#48BFE3' }
+                                },
+                                {
+                                    name: 'AI Model\nMarketplace',
+                                    itemStyle: { color: '#48BFE3' }
+                                }
+                            ]
+                        },
+                        {
+                            name: 'DePIN',
+                            itemStyle: { color: '#2CD1DB' },
+                            children: [
+                                {
+                                    name: 'Mining\nSystem',
+                                    itemStyle: { color: '#48BFE3' }
+                                },
+                                {
+                                    name: 'Hardware\nTokenization',
+                                    itemStyle: { color: '#48BFE3' }
+                                }
+                            ]
+                        },
+                        {
+                            name: 'SocialFi',
+                            itemStyle: { color: '#2CD1DB' },
+                            children: [
+                                {
+                                    name: 'DID\nSystem',
+                                    itemStyle: { color: '#48BFE3' }
+                                },
+                                {
+                                    name: 'Content\nCreation',
+                                    itemStyle: { color: '#48BFE3' }
+                                }
+                            ]
+                        },
+                        {
+                            name: 'RWA',
+                            itemStyle: { color: '#2CD1DB' },
+                            children: [
+                                {
+                                    name: 'Physical\nAssets',
+                                    itemStyle: { color: '#48BFE3' }
+                                },
+                                {
+                                    name: 'Asset\nVerification',
+                                    itemStyle: { color: '#48BFE3' }
+                                }
+                            ]
+                        }
+                    ]
+                }],
+                top: '5%',
+                left: '2%',
+                right: '2%',
+                bottom: '15%',
+                symbolSize: 12,
+                orient: 'TB',
+                layout: 'orthogonal',
+                initialTreeDepth: 2,
+                label: {
+                    position: 'bottom',
+                    distance: 15,
+                    color: '#FFFFFF',
+                    fontSize: 14,
+                    rotate: 0,
+                    align: 'center',
+                    verticalAlign: 'middle'
+                },
+                leaves: {
+                    label: {
+                        position: 'bottom',
+                        distance: 15,
+                        rotate: 30
+                    }
+                },
+                itemStyle: {
+                    borderWidth: 2,
+                    borderColor: '#0D1117'
+                },
+                lineStyle: {
+                    color: '#2CD1DB',
+                    width: 2,
+                    curveness: 0.5
+                },
+                emphasis: {
+                    focus: 'descendant',
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowColor: '#00B4D8'
+                    }
+                },
+                expandAndCollapse: true,
+                animationDuration: 550,
+                animationDurationUpdate: 750
+            }]
+        };
+        
+        ecosystemChart.setOption(ecosystemOption);
+
+        window.addEventListener('resize', () => {
+            ecosystemChart.resize();
+        });
+    </script>
+</body>
+</html>

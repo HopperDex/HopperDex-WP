@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hopper Product Services Visualizations</title>
+    <style>
+        :root {
+            --hopper-blue: #00B4D8;
+            --hopper-dark-blue: #0077B6;
+            --hopper-light-blue: #90E0EF;
+            --hopper-bg: #0D1117;
+            --hopper-white: #FFFFFF;
+            --hopper-green: #2EC4B6;
+            --hopper-red: #E63946;
+            --hopper-yellow: #FFD166;
+            --glow-color: rgba(0, 180, 216, 0.5);
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--hopper-bg);
+            font-family: Arial, sans-serif;
+            color: var(--hopper-white);
+        }
+        #container {
+            width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .title {
+            color: var(--hopper-blue);
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .subtitle {
+            color: var(--hopper-white);
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+        .viz-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .viz-card {
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .viz-card:hover {
+            background: rgba(0, 180, 216, 0.2);
+            box-shadow: 0 0 20px var(--glow-color);
+            transform: translateY(-5px);
+        }
+        .viz-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--hopper-blue);
+        }
+        .viz-desc {
+            font-size: 16px;
+            color: var(--hopper-white);
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        .viz-link {
+            display: inline-block;
+            background: rgba(0, 180, 216, 0.3);
+            color: var(--hopper-white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        .viz-link:hover {
+            background: rgba(0, 180, 216, 0.5);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: var(--hopper-white);
+            opacity: 0.6;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="title">Hopper Product Services Visualizations</div>
+        <div class="subtitle">Interactive charts and visualizations for Hopper's next-generation multi-chain DEX platform</div>
+        
+        <div class="viz-grid">
+            <div class="viz-card">
+                <div class="viz-title">1. Trading System Architecture</div>
+                <div class="viz-desc">
+                    Explore Hopper's hybrid AMM + CLOB trading system architecture with performance metrics comparing transaction speed, slippage control, and capital efficiency to traditional DEXs.
+                </div>
+                <a href="product_services_viz_part1.html" class="viz-link">View Visualization</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">2. Multi-Chain Support & Cross-Chain Flow</div>
+                <div class="viz-desc">
+                    Visualize Hopper's multi-chain integration capabilities, cross-chain performance metrics, and user experience improvements compared to traditional bridges.
+                </div>
+                <a href="product_services_viz_part2.html" class="viz-link">View Visualization</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">3. Launchpad Features & Performance</div>
+                <div class="viz-desc">
+                    Discover Hopper's next-generation token launch platform with anti-manipulation safeguards, professional services for projects, and launch process efficiency metrics.
+                </div>
+                <a href="product_services_viz_part3.html" class="viz-link">View Visualization</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">4. Technical Innovation Metrics</div>
+                <div class="viz-desc">
+                    Analyze the impact of Hopper's technical innovations including hybrid market making, AI smart routing, and token launch security features.
+                </div>
+                <a href="product_services_viz_part4.html" class="viz-link">View Visualization</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">5. Security Architecture</div>
+                <div class="viz-desc">
+                    Explore Hopper's multi-layer security architecture including smart contract security, cryptographic custody, real-time risk control, and emergency response capabilities.
+                </div>
+                <a href="product_services_viz_part5.html" class="viz-link">View Visualization</a>
+            </div>
+        </div>
+        
+        <div class="footer">© 2024 Hopper - Next-Generation Multi-Chain DEX Platform</div>
+    </div>
+</body>
+</html>

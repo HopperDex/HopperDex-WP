@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hopper Token Allocation</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --hopper-blue: #00B4D8;
+            --hopper-dark-blue: #0077B6;
+            --hopper-light-blue: #90E0EF;
+            --hopper-bg: #0D1117;
+            --hopper-white: #FFFFFF;
+            --hopper-green: #2EC4B6;
+            --hopper-red: #E63946;
+            --hopper-yellow: #FFD166;
+            --hopper-purple: #7209B7;
+            --hopper-pink: #F72585;
+            --glow-color: rgba(0, 180, 216, 0.5);
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--hopper-bg);
+            font-family: Arial, sans-serif;
+            color: var(--hopper-white);
+        }
+        #fullContainer {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .chart-container {
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 400px;
+            box-shadow: 0 0 15px var(--glow-color);
+            transition: box-shadow 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 0 25px var(--glow-color);
+        }
+        .title {
+            color: var(--hopper-blue);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .subtitle {
+            color: var(--hopper-white);
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        .source {
+            color: var(--hopper-white);
+            font-size: 12px;
+            text-align: right;
+            margin-top: 10px;
+            opacity: 0.6;
+        }
+        .token-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .info-card {
+            background: rgba(0, 180, 216, 0.05);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .info-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--hopper-blue);
+            margin-bottom: 10px;
+        }
+        .info-content {
+            font-size: 14px;
+            color: var(--hopper-white);
+        }
+        .allocation-details {
+            margin-top: 20px;
+        }
+        .allocation-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .color-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .allocation-name {
+            font-size: 14px;
+            color: var(--hopper-white);
+            flex: 1;
+        }
+        .allocation-percent {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--hopper-blue);
+            width: 50px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullContainer">
+        <div class="title">Hopper Token (HOP) Allocation</div>
+        <div class="subtitle">Total Supply: 5 Billion HOP - Fixed Supply, No Additional Issuance</div>
+        <div id="container">
+            <div class="chart-container">
+                <canvas id="tokenAllocationChart"></canvas>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+            <div class="chart-container">
+                <div class="info-card">
+                    <div class="info-title">Token Basic Information</div>
+                    <div class="info-content">
+                        <p><strong>Token Name:</strong> Hopper Token</p>
+                        <p><strong>Token Symbol:</strong> HOP</p>
+                        <p><strong>Contract Standard:</strong> BNB Chain Token</p>
+                        <p><strong>Decimal Places:</strong> 9</p>
+                        <p><strong>Initial Circulating Market Cap:</strong> $127.2 million</p>
+                        <p><strong>Fully Diluted Valuation:</strong> $636 million</p>
+                    </div>
+                </div>
+                <div class="allocation-details">
+                    <div class="allocation-item">
+                        <div class="color-indicator" style="background-color: rgba(0, 180, 216, 0.8);"></div>
+                        <div class="allocation-name">DID Mutual Finance Incentives</div>
+                        <div class="allocation-percent">20%</div>
+                    </div>
+                    <div class="allocation-item">
+                        <div class="color-indicator" style="background-color: rgba(46, 196, 182, 0.8);"></div>
+                        <div class="allocation-name">Ecosystem Development</div>
+                        <div class="allocation-percent">15%</div>
+                    </div>
+                    <div class="allocation-item">
+                        <div class="color-indicator" style="background-color: rgba(255, 209, 102, 0.8);"></div>
+                        <div class="allocation-name">Liquidity</div>
+                        <div class="allocation-percent">15%</div>
+                    </div>
+                    <div class="allocation-item">
+                        <div class="color-indicator" style="background-color: rgba(0, 119, 182, 0.8);"></div>
+                        <div class="allocation-name">Financing</div>
+                        <div class="allocation-percent">25%</div>
+                    </div>
+                    <div class="allocation-item">
+                        <div class="color-indicator" style="background-color: rgba(144, 224, 239, 0.8);"></div>
+                        <div class="allocation-name">Team</div>
+                        <div class="allocation-percent">20%</div>
+                    </div>
+                    <div class="allocation-item">
+                        <div class="color-indicator" style="background-color: rgba(114, 9, 183, 0.8);"></div>
+                        <div class="allocation-name">Community Incentives</div>
+                        <div class="allocation-percent">5%</div>
+                    </div>
+                </div>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+            <div class="chart-container" style="grid-column: span 2;">
+                <canvas id="financingBreakdownChart"></canvas>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hopperBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-blue').trim();
+        const hopperDarkBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-dark-blue').trim();
+        const hopperLightBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-light-blue').trim();
+        const hopperWhite = getComputedStyle(document.documentElement).getPropertyValue('--hopper-white').trim();
+        const hopperGreen = getComputedStyle(document.documentElement).getPropertyValue('--hopper-green').trim();
+        const hopperYellow = getComputedStyle(document.documentElement).getPropertyValue('--hopper-yellow').trim();
+        const hopperPurple = getComputedStyle(document.documentElement).getPropertyValue('--hopper-purple').trim();
+        const hopperPink = getComputedStyle(document.documentElement).getPropertyValue('--hopper-pink').trim();
+
+        // Token Allocation Chart
+        const tokenAllocationCtx = document.getElementById('tokenAllocationChart').getContext('2d');
+        new Chart(tokenAllocationCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'DID Mutual Finance Incentives (20%)',
+                    'Ecosystem Development (15%)',
+                    'Liquidity (15%)',
+                    'Financing (25%)',
+                    'Team (20%)',
+                    'Community Incentives (5%)'
+                ],
+                datasets: [{
+                    data: [20, 15, 15, 25, 20, 5],
+                    backgroundColor: [
+                        'rgba(0, 180, 216, 0.8)',
+                        'rgba(46, 196, 182, 0.8)',
+                        'rgba(255, 209, 102, 0.8)',
+                        'rgba(0, 119, 182, 0.8)',
+                        'rgba(144, 224, 239, 0.8)',
+                        'rgba(114, 9, 183, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 180, 216, 1)',
+                        'rgba(46, 196, 182, 1)',
+                        'rgba(255, 209, 102, 1)',
+                        'rgba(0, 119, 182, 1)',
+                        'rgba(144, 224, 239, 1)',
+                        'rgba(114, 9, 183, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'HOP Token Allocation (5 Billion Total Supply)',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: hopperWhite,
+                            padding: 20,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.formattedValue;
+                                const tokenAmount = (5000000000 * context.raw / 100).toLocaleString();
+                                return `${label}: ${value}% (${tokenAmount} HOP)`;
+                            }
+                        }
+                    }
+                },
+                cutout: '50%'
+            }
+        });
+
+        // Financing Breakdown Chart
+        const financingBreakdownCtx = document.getElementById('financingBreakdownChart').getContext('2d');
+        new Chart(financingBreakdownCtx, {
+            type: 'bar',
+            data: {
+                labels: ['IDO', 'Seed Round', 'Institutional Round'],
+                datasets: [{
+                    label: 'Percentage of Total Supply',
+                    data: [15, 5, 5],
+                    backgroundColor: [
+                        'rgba(0, 119, 182, 0.8)',
+                        'rgba(0, 119, 182, 0.6)',
+                        'rgba(0, 119, 182, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 119, 182, 1)',
+                        'rgba(0, 119, 182, 1)',
+                        'rgba(0, 119, 182, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Financing Breakdown (25% of Total Supply)',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'IDO: $0.08-$0.1272 | Seed: $0.03 | Institutional: $0.05',
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        font: {
+                            size: 14
+                        },
+                        padding: {
+                            bottom: 20
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.dataset.label || '';
+                                const value = context.formattedValue;
+                                const tokenAmount = (5000000000 * context.raw / 100).toLocaleString();
+                                return `${label}: ${value}% (${tokenAmount} HOP)`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        },
+                        title: {
+                            display: true,
+                            text: 'Percentage of Total Supply',
+                            color: hopperWhite
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

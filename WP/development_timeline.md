@@ -1,4 +1,4 @@
-## **VI. Development Roadmap**
+## **VI. Development Timeline**
 
 ### **Hopper 2025 Development Roadmap**
 
@@ -6,21 +6,21 @@
 
 **Seed Round Financing**
 
-**Product Architecture Improvement**
+**Product Architecture Enhancement**
 
 * Hopper Launch Platform  
-* Hopper Cross-Chain Bridge  
+* Hopper Cross-chain Bridge  
 * MPC Wallet Basic Version  
 * Security Audit 1.0
 
-#### **Social Media Matrix Construction**
+#### **Social Media Matrix Development**
 
-* Social Platform Layout  
-  * Official Twitter Account Operation  
+* Social Platform Deployment  
+  * Twitter Official Account Operation  
   * Telegram Community Building  
   * Discord Community Setup  
   * Medium Content Platform  
-* Content Matrix Building  
+* Content Matrix Development  
   * Product Tutorial Series  
   * Market Analysis Reports  
   * User Case Sharing  
@@ -30,24 +30,24 @@
 
 **Institutional Round Financing**
 
-**1.0 Version Official Launch**
+**Version 1.0 Official Launch**
 
 **Community Airdrop Plan**
 
-* Precision Airdrop  
+* Precision Airdrop Implementation  
   * Early User Rewards  
   * Ecosystem Contributor Airdrops  
-  * Community Activity Rewards
+  * Community Activist Rewards
 
-**Token Issuance (TGE)**
+**Token Generation Event (TGE)**
 
 * IDO Launch & Token Issuance  
 * Token Economic Model  
   * Issuance Mechanism Design  
-  * Distribution Plan Formulation  
+  * Allocation Plan Formulation  
   * Lock-up Plan Implementation
 
-**DID Mutual Finance Incentive Plan**
+**DID Mutual Finance Incentive Program**
 
 **User Interface Optimization**
 
@@ -62,7 +62,7 @@
 **Hopper 2.0 Upgrade**
 
 * Feature Enhancement  
-  * Multi-Chain DEX Integration  
+  * Multi-chain DEX Integration  
   * Advanced Trading Functions  
   * Professional Chart Tools  
   * Risk Control System Optimization  
@@ -70,16 +70,16 @@
 
 **Global Community Building**
 
-* Regional Market Expansion  
+* Regional Market Development  
   * Asia-Pacific Community Building  
-  * European and American Market Development  
-  * Emerging Market Layout  
+  * European and American Market Expansion  
+  * Emerging Market Deployment  
 * Localization Operations  
   * Multi-language Support  
   * Regional Ambassador Program  
   * Local Event Planning
 
-**H Points Incentive Plan-2**
+**H Points Incentive Program-2**
 
 * Ecosystem Incentive Upgrade  
   * Advanced Trading Rewards  
@@ -92,10 +92,10 @@
 **Ecosystem Cooperation**
 
 * Strategic Partnerships  
-  * Top Project Collaboration  
-  * Institutional User Integration  
+  * Top Project Collaborations  
+  * Institutional User Onboarding  
   * Ecosystem Project Incubation  
-  * Stablecoin Ecosystem Layout  
+  * Stablecoin Ecosystem Development  
 * Trading Activities  
   * Large-scale Trading Competitions  
   * Market Making Incentives  
@@ -103,7 +103,7 @@
 
 **DAO Governance Launch**
 
-* Governance Mechanisms  
+* Governance Mechanism  
   * Proposal Mechanism Establishment  
   * Voting System Launch  
   * Community Fund Management  
@@ -127,15 +127,15 @@
 #### **2026 Q3 - Q4**
 
 * UI Interface 3.0 Upgrade  
-* DeFi Aggregation Yield Launch  
+* DeFi Aggregated Yield Launch  
 * Monthly Active Users Exceeding 300k+  
 * Platform Users Exceeding 800k+  
-* Support for Over 200+ Tokens
+* Supported Token Count Exceeding 200+
 
 #### **2027 - 2028**
 
 * Platform Users Exceeding 2M+  
-* Fully AI-driven Trading Assistant  
+* Fully AI-Driven Trading Assistant  
 * Building a Comprehensive Cross-Chain Decentralized Exchange
 
 ### **Hopper Key Performance Indicators (KPIs)**

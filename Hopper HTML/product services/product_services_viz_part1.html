@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hopper Product Services - Trading System Architecture</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --hopper-blue: #00B4D8;
+            --hopper-dark-blue: #0077B6;
+            --hopper-light-blue: #90E0EF;
+            --hopper-bg: #0D1117;
+            --hopper-white: #FFFFFF;
+            --hopper-green: #2EC4B6;
+            --hopper-red: #E63946;
+            --hopper-yellow: #FFD166;
+            --glow-color: rgba(0, 180, 216, 0.5);
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--hopper-bg);
+            font-family: Arial, sans-serif;
+            color: var(--hopper-white);
+        }
+        #fullContainer {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .chart-container {
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 300px;
+            box-shadow: 0 0 15px var(--glow-color);
+            transition: box-shadow 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 0 25px var(--glow-color);
+        }
+        .title {
+            color: var(--hopper-blue);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .subtitle {
+            color: var(--hopper-white);
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        .stat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--hopper-blue);
+            min-width: 150px;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .stat-label {
+            font-size: 16px;
+            color: var(--hopper-white);
+            opacity: 0.8;
+        }
+        .progress-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+        .progress-label {
+            font-size: 16px;
+            color: var(--hopper-white);
+            text-align: right;
+            opacity: 0.8;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--hopper-blue), rgba(0, 180, 216, 0.6));
+            border-radius: 15px;
+            transition: width 1s ease-in-out;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        .progress-text {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--hopper-white);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .source {
+            color: var(--hopper-white);
+            font-size: 12px;
+            text-align: right;
+            margin-top: 10px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullContainer">
+        <div class="title">Hopper Trading System Architecture</div>
+        <div class="subtitle">Performance Metrics & Technical Advantages</div>
+        <div id="container">
+            <div class="chart-container">
+                <canvas id="tradingPerformanceChart"></canvas>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+            <div class="chart-container stat-container">
+                <div class="stat-item">
+                    <div class="stat-number"><2s</div>
+                    <div class="stat-label">Small Transaction Confirmation Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><0.5%</div>
+                    <div class="stat-label">Large Transaction Slippage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-label">Capital Utilization Improvement</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Large Order Transaction Cost Savings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10ms</div>
+                    <div class="stat-label">Path Optimization Calculation Time</div>
+                </div>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hopperBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-blue').trim();
+        const hopperDarkBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-dark-blue').trim();
+        const hopperLightBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-light-blue').trim();
+        const hopperWhite = getComputedStyle(document.documentElement).getPropertyValue('--hopper-white').trim();
+        const hopperRed = getComputedStyle(document.documentElement).getPropertyValue('--hopper-red').trim();
+        const hopperYellow = getComputedStyle(document.documentElement).getPropertyValue('--hopper-yellow').trim();
+        const hopperGreen = getComputedStyle(document.documentElement).getPropertyValue('--hopper-green').trim();
+
+        // Trading Performance Chart
+        const tradingPerformanceCtx = document.getElementById('tradingPerformanceChart').getContext('2d');
+        new Chart(tradingPerformanceCtx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Transaction Speed',
+                    'Capital Efficiency',
+                    'Slippage Control',
+                    'Gas Cost Savings',
+                    'Price Stability',
+                    'Routing Efficiency'
+                ],
+                datasets: [{
+                    label: 'Hopper DEX',
+                    data: [95, 85, 90, 80, 85, 95],
+                    backgroundColor: 'rgba(0, 180, 216, 0.3)',
+                    borderColor: 'rgba(0, 180, 216, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(0, 180, 216, 1)',
+                    pointRadius: 5
+                }, {
+                    label: 'Traditional DEXs',
+                    data: [60, 50, 55, 50, 60, 55],
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Trading System Performance Comparison',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: hopperWhite
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(0, 180, 216, 0.2)'
+                        },
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.2)'
+                        },
+                        pointLabels: {
+                            color: hopperWhite,
+                            font: {
+                                size: 12
+                            }
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: 'rgba(255, 255, 255, 0.5)'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

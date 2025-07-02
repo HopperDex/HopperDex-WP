@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hopper Ecosystem - Market Data Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --hopper-blue: #00B4D8;
+            --hopper-dark-blue: #0077B6;
+            --hopper-light-blue: #90E0EF;
+            --hopper-bg: #0D1117;
+            --hopper-white: #FFFFFF;
+            --glow-color: rgba(0, 180, 216, 0.5);
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--hopper-bg);
+            font-family: Arial, sans-serif;
+            color: var(--hopper-white);
+        }
+        #fullContainer {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .chart-container {
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 300px;
+            box-shadow: 0 0 15px var(--glow-color);
+            transition: box-shadow 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 0 25px var(--glow-color);
+        }
+        .title {
+            color: var(--hopper-blue);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .subtitle {
+            color: var(--hopper-white);
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        .stat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--hopper-blue);
+            min-width: 150px;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .stat-label {
+            font-size: 16px;
+            color: var(--hopper-white);
+            opacity: 0.8;
+        }
+        .progress-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+        .progress-label {
+            font-size: 16px;
+            color: var(--hopper-white);
+            text-align: right;
+            opacity: 0.8;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--hopper-blue), rgba(0, 180, 216, 0.6));
+            border-radius: 15px;
+            transition: width 1s ease-in-out;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        .progress-text {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--hopper-white);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .source {
+            color: var(--hopper-white);
+            font-size: 12px;
+            text-align: right;
+            margin-top: 10px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullContainer">
+        <div class="title">Hopper Ecosystem - Market Data Visualization</div>
+        <div class="subtitle">Cryptocurrency Market Data & Growth Opportunities 2024</div>
+        <div id="container">
+            <div class="chart-container">
+                <canvas id="userAdoptionChart"></canvas>
+                <div class="source">Source: CoinMarketCap, Messari 2024</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="ventureCapitalChart"></canvas>
+                <div class="source">Source: a16z, Galaxy Digital, Messari 2024</div>
+            </div>
+            <div class="chart-container stat-container">
+                <div class="stat-item">
+                    <div class="stat-number">220M</div>
+                    <div class="stat-label">Global Active Addresses (Sept 2024)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$62.6B</div>
+                    <div class="stat-label">Solana DeFi Transaction Volume</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$11.5B</div>
+                    <div class="stat-label">Annual Crypto VC Investment</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$14M</div>
+                    <div class="stat-label">Record Single-day Token Launch Revenue</div>
+                </div>
+                <div class="source">Source: a16z, CoinMarketCap, Messari, 2024</div>
+            </div>
+            <div class="chart-container stat-container">
+                <div class="progress-section">
+                    <div class="progress-label">DeFi / Total Blockchain Users</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 34%">
+                            <span class="progress-text">34%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">DEX / Global Spot Trading</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 10%">
+                            <span class="progress-text">10%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">AI Integration in Crypto Projects</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 34%">
+                            <span class="progress-text">34%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="source">Source: Messari, Bloomberg, Galaxy Digital, 2024</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        const hopperBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-blue').trim();
+        const hopperWhite = getComputedStyle(document.documentElement).getPropertyValue('--hopper-white').trim();
+
+
+
+        // User Adoption Chart
+        const userCtx = document.getElementById('userAdoptionChart').getContext('2d');
+        new Chart(userCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Solana', 'NEAR', 'Base', 'Other Chains'],
+                datasets: [{
+                    label: 'Monthly Active Addresses (M)',
+                    data: [100, 31, 22, 67],
+                    backgroundColor: [
+                        'rgba(0, 180, 216, 0.8)',
+                        'rgba(0, 180, 216, 0.6)',
+                        'rgba(0, 180, 216, 0.4)',
+                        'rgba(0, 180, 216, 0.2)'
+                    ],
+                    borderColor: 'rgba(0, 180, 216, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Blockchain User Adoption 2024',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: hopperWhite
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    }
+                }
+            }
+        });
+
+        // Venture Capital Chart
+        const vcCtx = document.getElementById('ventureCapitalChart').getContext('2d');
+        new Chart(vcCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024'],
+                datasets: [{
+                    label: 'VC Investment ($ Billion)',
+                    data: [2.3, 2.7, 3.0, 3.5],
+                    borderColor: 'rgba(0, 180, 216, 1)',
+                    backgroundColor: 'rgba(0, 180, 216, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Crypto Venture Capital Investment',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'Total 2024: $11.5 Billion',
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        font: {
+                            size: 14
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: hopperWhite
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    }
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>

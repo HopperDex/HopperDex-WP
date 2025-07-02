@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hopper Product Services - Multi-Chain Support</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --hopper-blue: #00B4D8;
+            --hopper-dark-blue: #0077B6;
+            --hopper-light-blue: #90E0EF;
+            --hopper-bg: #0D1117;
+            --hopper-white: #FFFFFF;
+            --hopper-green: #2EC4B6;
+            --hopper-red: #E63946;
+            --hopper-yellow: #FFD166;
+            --glow-color: rgba(0, 180, 216, 0.5);
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--hopper-bg);
+            font-family: Arial, sans-serif;
+            color: var(--hopper-white);
+        }
+        #fullContainer {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .chart-container {
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 300px;
+            box-shadow: 0 0 15px var(--glow-color);
+            transition: box-shadow 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 0 25px var(--glow-color);
+        }
+        .title {
+            color: var(--hopper-blue);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .subtitle {
+            color: var(--hopper-white);
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        .stat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--hopper-blue);
+            min-width: 150px;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .stat-label {
+            font-size: 16px;
+            color: var(--hopper-white);
+            opacity: 0.8;
+        }
+        .progress-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+        .progress-label {
+            font-size: 16px;
+            color: var(--hopper-white);
+            text-align: right;
+            opacity: 0.8;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--hopper-blue), rgba(0, 180, 216, 0.6));
+            border-radius: 15px;
+            transition: width 1s ease-in-out;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        .progress-text {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--hopper-white);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .source {
+            color: var(--hopper-white);
+            font-size: 12px;
+            text-align: right;
+            margin-top: 10px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullContainer">
+        <div class="title">Hopper Multi-Chain Support</div>
+        <div class="subtitle">Cross-Chain Performance & Integration</div>
+        <div id="container">
+            <div class="chart-container">
+                <canvas id="chainSupportChart"></canvas>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+            <div class="chart-container stat-container">
+                <div class="stat-item">
+                    <div class="stat-number"><1s</div>
+                    <div class="stat-label">On-chain Transaction Confirmation</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.99%</div>
+                    <div class="stat-label">Cross-chain Transfer Success Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$50M</div>
+                    <div class="stat-label">Daily Cross-chain Transaction Volume Cap</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Supported Cross-chain Tokens</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><15s</div>
+                    <div class="stat-label">One-stop Cross-chain Transaction Time</div>
+                </div>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="crossChainSavingsChart"></canvas>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="userExperienceChart"></canvas>
+                <div class="source">Source: Hopper Whitepaper, 2024</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hopperBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-blue').trim();
+        const hopperDarkBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-dark-blue').trim();
+        const hopperLightBlue = getComputedStyle(document.documentElement).getPropertyValue('--hopper-light-blue').trim();
+        const hopperWhite = getComputedStyle(document.documentElement).getPropertyValue('--hopper-white').trim();
+        const hopperRed = getComputedStyle(document.documentElement).getPropertyValue('--hopper-red').trim();
+        const hopperYellow = getComputedStyle(document.documentElement).getPropertyValue('--hopper-yellow').trim();
+        const hopperGreen = getComputedStyle(document.documentElement).getPropertyValue('--hopper-green').trim();
+
+        // Chain Support Chart
+        const chainSupportCtx = document.getElementById('chainSupportChart').getContext('2d');
+        new Chart(chainSupportCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Solana', 'BNB Chain', 'Ethereum', 'Base', 'Future Chains'],
+                datasets: [{
+                    label: 'Integration Level (%)',
+                    data: [100, 100, 90, 85, 60],
+                    backgroundColor: [
+                        'rgba(0, 180, 216, 0.8)',
+                        'rgba(0, 180, 216, 0.8)',
+                        'rgba(0, 180, 216, 0.7)',
+                        'rgba(0, 180, 216, 0.7)',
+                        'rgba(0, 180, 216, 0.5)'
+                    ],
+                    borderColor: 'rgba(0, 180, 216, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Blockchain Integration Level',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        },
+                        max: 100
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    }
+                }
+            }
+        });
+
+        // Cross-Chain Savings Chart
+        const crossChainSavingsCtx = document.getElementById('crossChainSavingsChart').getContext('2d');
+        new Chart(crossChainSavingsCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Fee Savings', 'Traditional Fee'],
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: [
+                        'rgba(46, 196, 182, 0.8)',
+                        'rgba(255, 255, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(46, 196, 182, 1)',
+                        'rgba(255, 255, 255, 0.5)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Cross-Chain Fee Reduction (75%)',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: hopperWhite
+                        }
+                    }
+                }
+            }
+        });
+
+        // User Experience Chart
+        const userExperienceCtx = document.getElementById('userExperienceChart').getContext('2d');
+        new Chart(userExperienceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Operation Steps', 'Processing Time', 'Success Rate'],
+                datasets: [{
+                    label: 'Hopper Cross-Chain',
+                    data: [40, 15, 99.99],
+                    backgroundColor: 'rgba(0, 180, 216, 0.7)',
+                    borderColor: 'rgba(0, 180, 216, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }, {
+                    label: 'Traditional Bridges',
+                    data: [100, 60, 97],
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Cross-Chain User Experience Comparison',
+                        color: hopperWhite,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'Lower is better for Operation Steps & Processing Time',
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        font: {
+                            size: 12
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: hopperWhite
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 180, 216, 0.1)'
+                        },
+                        ticks: {
+                            color: hopperWhite
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

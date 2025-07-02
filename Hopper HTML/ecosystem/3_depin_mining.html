@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AIDverse DePIN Mining System</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #00B4D8;
+            --secondary-color: #2CD1DB;
+            --background-color: #0D1117;
+            --text-color: #FFFFFF;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--background-color);
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title {
+            color: var(--text-color);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+        .chart-container {
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            height: 800px;
+            box-shadow: 0 0 15px rgba(0, 180, 216, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">DePIN Mining System</h1>
+        <div class="subtitle">Mining Process and Reward Distribution</div>
+        
+        <div class="chart-container" id="miningChart"></div>
+    </div>
+
+    <script>
+        const miningChart = echarts.init(document.getElementById('miningChart'));
+        const miningOption = {
+            backgroundColor: 'transparent',
+            title: {
+                text: 'DePIN Mining Workflow',
+                textStyle: { color: '#FFFFFF' }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}'
+            },
+            series: [{
+                type: 'graph',
+                layout: 'none',
+                symbolSize: 50,
+                roam: true,
+                label: {
+                    show: true,
+                    color: '#FFFFFF',
+                    fontSize: 12
+                },
+                edgeLabel: {
+                    show: false
+                },
+                data: [
+                    {
+                        name: 'Hardware\nRegistration',
+                        x: 100,
+                        y: 300,
+                        itemStyle: { color: '#00B4D8' }
+                    },
+                    {
+                        name: 'RWA\nTokenization',
+                        x: 250,
+                        y: 300,
+                        itemStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        name: 'Mining Pool\nJoining',
+                        x: 400,
+                        y: 300,
+                        itemStyle: { color: '#48BFE3' }
+                    },
+                    {
+                        name: 'Performance\nMonitoring',
+                        x: 550,
+                        y: 300,
+                        itemStyle: { color: '#5390D9' }
+                    },
+                    {
+                        name: 'Reward\nCalculation',
+                        x: 700,
+                        y: 300,
+                        itemStyle: { color: '#6930C3' }
+                    },
+                    {
+                        name: 'Token\nDistribution',
+                        x: 850,
+                        y: 300,
+                        itemStyle: { color: '#00B4D8' }
+                    },
+                    {
+                        name: 'Governance\nRights',
+                        x: 850,
+                        y: 150,
+                        itemStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        name: 'Network\nExpansion',
+                        x: 700,
+                        y: 450,
+                        itemStyle: { color: '#48BFE3' }
+                    }
+                ],
+                links: [
+                    {
+                        source: 'Hardware\nRegistration',
+                        target: 'RWA\nTokenization',
+                        lineStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        source: 'RWA\nTokenization',
+                        target: 'Mining Pool\nJoining',
+                        lineStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        source: 'Mining Pool\nJoining',
+                        target: 'Performance\nMonitoring',
+                        lineStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        source: 'Performance\nMonitoring',
+                        target: 'Reward\nCalculation',
+                        lineStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        source: 'Reward\nCalculation',
+                        target: 'Token\nDistribution',
+                        lineStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        source: 'Token\nDistribution',
+                        target: 'Governance\nRights',
+                        lineStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        source: 'Token\nDistribution',
+                        target: 'Network\nExpansion',
+                        lineStyle: { color: '#2CD1DB' }
+                    },
+                    {
+                        source: 'Network\nExpansion',
+                        target: 'Mining Pool\nJoining',
+                        lineStyle: { 
+                            color: '#2CD1DB',
+                            type: 'dashed'
+                        }
+                    }
+                ],
+                lineStyle: {
+                    width: 2,
+                    curveness: 0.2
+                },
+                emphasis: {
+                    focus: 'adjacency',
+                    lineStyle: {
+                        width: 4
+                    }
+                }
+            }]
+        };
+        
+        miningChart.setOption(miningOption);
+
+        window.addEventListener('resize', () => {
+            miningChart.resize();
+        });
+    </script>
+</body>
+</html>
