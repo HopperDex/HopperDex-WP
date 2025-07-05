@@ -6,6 +6,8 @@
 
 加密货币行业在2024年迎来了关键转折点，规模化采用和机构认可度的提升标志着市场步入了全新的发展阶段。根据a16z的《State of Crypto Report 2024》\[1]、CoinMarketCap的“Week in Solana: 2024 Recap”\[2]以及Galaxy Digital最新发布的《Crypto & Blockchain Venture Capital – Q4 2024》\[3]的数据显示，多方面指标都表明这一领域正迎来前所未有的发展机遇。
 
+<figure><img src="../.gitbook/assets/bg1.png" alt=""><figcaption></figcaption></figure>
+
 **用户采用爆发性增长**
 
 2024年9月全球活跃地址数量达到2.2亿\[2]，较**2023年底增长超过200%**。其中，**Solana**表现尤为突出，月活跃地址达到1亿，遥遥领先于其他公链。紧随其后的是**NEAR**（3100万）和Coinbase的**Base**（2200万）。
@@ -14,9 +16,13 @@
 
 根据Messari的《State of DeFi Q4 2024》\[4]，DeFi市场的日活跃用户已占到区块链总日活用户的**34%**，这一增长趋势清晰地表明DeFi正在成为区块链应用的主流场景。
 
+<figure><img src="../.gitbook/assets/Addresses.jpg" alt=""><figcaption></figcaption></figure>
+
 **风险投资持续看好**
 
 2024年第四季度加密货币初创公司获得了**35亿美元**投资（环比增长**46%**）\[1]，全年总投资达到惊人的**115亿美元**。根据Messari的《State of Crypto Fundraising: Q2 2024》\[5]，该季度的交易量较上一季度增长了**22.5%**，网络、金融和基础设施领域的融资尤为活跃。
+
+<figure><img src="../.gitbook/assets/Top10 VC.avif" alt=""><figcaption></figcaption></figure>
 
 分析最新投资数据，我们可以观察到以下显著特点：
 
@@ -26,17 +32,23 @@
 * **后期项目**占据40%，较上季度的15%显著提升
 * **种子轮**项目数量保持健康水平，强劲地展示了创业生态的日益活跃
 
+<figure><img src="../.gitbook/assets/VC Capital and Stages.avif" alt=""><figcaption></figcaption></figure>
+
 **领域分布**
 
 * **稳定币项目**获得最多资金支持，反映了市场对基础设施的高度信心
 * **基础设施**和**Web3**项目紧随其后
 * **Web3**、**DeFi**和**基础设施**项目占据最多投资案例数量
 
+<figure><img src="../.gitbook/assets/VC Deals by Category and Stages.avif" alt=""><figcaption></figcaption></figure>
+
 **地理分布**
 
 * **美国**企业获得46%的投资额，继续保持全球领先地位
 * **香港**企业升17%，较前期显著提升，强劲崛起
 * **新加坡**和**英国**企业也表现非常活跃，稳健发展
+
+<figure><img src="../.gitbook/assets/Geographic.avif" alt=""><figcaption></figcaption></figure>
 
 **MEME代币市场突飞猬进**
 
@@ -68,6 +80,8 @@ MEME代币市场在2024年展现了前所未有的繁荣势头，该组合赛道
 * **Solana**链上稳定币TVL已接近**50亿美元**，形成了重要的支付和结算基础设施
 * 稳定币发行方已成为**美国国债第20大持有者**，形成了与传统金融体系的强大连接
 
+<figure><img src="../.gitbook/assets/Stablecoin.jpg" alt=""><figcaption></figcaption></figure>
+
 **创新应用场景快速扩展**
 
 随着基础设施的显著改善和交易成本的持续降低，加密货币领域正在涌现出一系列革命性的新应用场景\[3]：
@@ -77,6 +91,8 @@ MEME代币市场在2024年展现了前所未有的繁荣势头，该组合赛道
 * DeFi钱包地址占总日活地址比例达**34%**，较2023年增长**12个百分点**
 * DEX交易量占全球现货交易**10%**，Bloomberg研究指出这一比例在特定市场条件下可达**15%**\[6]
 * 总锁仓价值已达**1690亿美元**，强劲展示了市场对DeFi协议的深入信任与采纳
+
+<figure><img src="../.gitbook/assets/crypto trading moving to dex.jpg" alt=""><figcaption></figcaption></figure>
 
 **社交金融爆发式增长**
 
@@ -91,6 +107,8 @@ MEME代币市场在2024年展现了前所未有的繁荣势头，该组合赛道
 * 基础设施类项目成为AI技术应用最广泛的领域，占比达**47%**，展现了两者的天然协同效应
 
 这些市场趋势与Hopper的核心产品策略高度匹配，使我们的闪电级交易速度、AI驱动的智能分析和全方位DeFi生态系统恰好定位于市场最具发展潜力的前沿领域。
+
+<figure><img src="../.gitbook/assets/AI and Crypto.jpg" alt=""><figcaption></figcaption></figure>
 
 ### **项目愿景与使命**
 

@@ -1,10 +1,8 @@
 # Table of contents
 
-* [白皮书](README.md)
-
 ## English
 
-* [Executive Summary](english/executive-summary.md)
+* [Executive Summary](README.md)
 * [Product Services](english/product-services.md)
 * [Business Model](english/business-model.md)
 * [Marketing Strategy](english/marketing-strategy.md)
