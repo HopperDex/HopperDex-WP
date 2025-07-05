@@ -10,6 +10,8 @@
 * 初始流通市值：1.272亿美元
 * 完全稀释估值：6.360亿美元
 
+<figure><img src="../.gitbook/assets/Tokenomics.png" alt=""><figcaption></figcaption></figure>
+
 ## **代币分配方案（50亿HOP）**
 
 |     类别     |  比例 |        释放时间        | 说明                                                                                                |

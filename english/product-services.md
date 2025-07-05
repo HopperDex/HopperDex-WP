@@ -2,6 +2,8 @@
 
 ## **Trading System Architecture**
 
+<figure><img src="../.gitbook/assets/Trading System Architecture.png" alt=""><figcaption></figcaption></figure>
+
 Hopper's trading system employs a breakthrough **hybrid architecture design** that innovatively combines **Automated Market Maker (AMM)** and **Centralized Limit Order Book (CLOB)** mechanisms. Through dynamically adjusted liquidity curves and multi-tiered liquidity pool design, the system can simultaneously meet the needs of transactions of different scales:
 
 * **Small transactions** (<$10,000): Confirmation time **<2 seconds**
@@ -25,6 +27,8 @@ In terms of performance optimization, Hopper adopts a combination of on-chain an
 This innovative architectural design not only guarantees the high performance and reliability of the system but also leaves ample room for future expansion, supporting the ability to process **10,000+** transaction requests per second.
 
 ## **Multi-Chain Support**
+
+<figure><img src="../.gitbook/assets/Multi Chain Support.png" alt=""><figcaption></figcaption></figure>
 
 Hopper's multi-chain support strategy is founded on two high-performance public chains, **BNB Chain** and **Solana**, and extends to other mainstream blockchain networks through innovative cross-chain infrastructure. Our cross-chain architecture adopts an advanced **two-layer design**:
 
@@ -63,6 +67,8 @@ In terms of security, Hopper implements industry-leading security assurance mech
 In the future, as the blockchain ecosystem expands, Hopper will gradually extend support to **Layer 2** solutions and emerging high-performance public chains based on market demands and user feedback, ultimately realizing a truly seamless interconnected multi-chain DeFi ecosystem, providing users with borderless, low-friction global asset liquidity.
 
 ## **Launchpad Functionality Details**
+
+<figure><img src="../.gitbook/assets/Launchpad.png" alt=""><figcaption></figcaption></figure>
 
 Hopper Launchpad, as a next-generation token launch platform, not only maintains efficiency and convenience but also emphasizes **project quality** and **user fairness** as core design principles. Our launch mechanism addresses the pain points of traditional IDO platforms and innovatively solves several industry challenges:
 
@@ -110,6 +116,8 @@ Hopper provides projects with a comprehensive support ecosystem:
 
 ## **Technical Innovation Points**
 
+<figure><img src="../.gitbook/assets/Technical Innovation.png" alt=""><figcaption></figcaption></figure>
+
 Hopper's technological innovations in the DeFi domain are primarily manifested in the following three core aspects:
 
 ### **1. Innovative Hybrid Market-Making Mechanism**
@@ -145,6 +153,8 @@ The accompanying efficient **anti-bot system** employs cutting-edge behavioral p
 These technological innovations not only significantly enhance Hopper platform's performance metrics and user trading experience but also provide new solutions for the healthy development of the entire DeFi ecosystem. We are continuously investing resources in R\&D innovation, exploring more technological breakthroughs to promote a new paradigm of decentralized finance.
 
 ## **Security Design**
+
+<figure><img src="../.gitbook/assets/Security Architecture.png" alt=""><figcaption></figcaption></figure>
 
 Hopper prioritizes security as the primary consideration in platform design, employing a multi-layered protective architecture to ensure the safety of user assets and transactions. Our security framework consists of four key pillars:
 

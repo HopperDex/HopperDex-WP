@@ -1,5 +1,7 @@
 # Business Model
 
+<figure><img src="../.gitbook/assets/BM.png" alt=""><figcaption></figcaption></figure>
+
 ## **Revenue Streams**
 
 Hopper platform's revenue structure consists of four major components, with trading fees accounting for 50% of total revenue as the platform's primary income source. The platform implements a highly competitive 0.2% base trading fee, with a differentiated fee structure serving different user segments. For large-volume traders and market makers, rates can be as low as 0.02%; VIP users enjoy tiered fee discounts with rates as low as 0.05%. The platform has launched comprehensive trading incentive programs, including volume-based rebates, market maker incentives, and referral profit sharing, creating a multi-layered incentive system to promote trading activity.

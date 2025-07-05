@@ -10,6 +10,8 @@
 * Initial Circulating Market Cap: $127.2 million
 * Fully Diluted Valuation: $636 million
 
+<figure><img src="../.gitbook/assets/Tokenomics.png" alt=""><figcaption></figcaption></figure>
+
 ## **Token Allocation Plan (5 Billion HOP)**
 
 |            Category           | Percentage |                       Release Schedule                      | Description                                                                                                                                                                                                                                    |
