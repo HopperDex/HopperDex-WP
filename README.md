@@ -1,6 +1,6 @@
 # Executive Summary
 
-### **I. Executive Summary**
+### **Executive Summary**
 
 #### **Industry Development Overview**
 
